@@ -26,13 +26,15 @@ export const App: React.FC = () => {
   }, []);
 
   const filteredTodos = todos.filter(todo => {
-    if (filterStatus === 'completed' && !todo.completed) return false;
-    if (filterStatus === 'active' && todo.completed) return false;
+    if (filterStatus === 'completed' && !todo.completed) {
+      return false;
+    }
 
-    if (
-      query &&
-      !todo.title.toLowerCase().includes(query.toLowerCase())
-    ) {
+    if (filterStatus === 'active' && todo.completed) {
+      return false;
+    }
+
+    if (query && !todo.title.toLowerCase().includes(query.toLowerCase())) {
       return false;
     }
 
@@ -70,10 +72,7 @@ export const App: React.FC = () => {
       </div>
 
       {selectedTodo && (
-        <TodoModal
-          todo={selectedTodo}
-          onClose={() => setSelectedTodo(null)}
-        />
+        <TodoModal todo={selectedTodo} onClose={() => setSelectedTodo(null)} />
       )}
     </div>
   );

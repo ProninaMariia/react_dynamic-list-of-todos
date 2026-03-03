@@ -63,8 +63,7 @@ export const TodoModal: React.FC<Props> = ({ todo, onClose }) => {
           </p>
 
           <p>
-            <strong>Status:</strong>{' '}
-            {todo.completed ? 'Completed' : 'Active'}
+            <strong>Status:</strong> {todo.completed ? 'Completed' : 'Active'}
           </p>
 
           {isLoading && <Loader />}
